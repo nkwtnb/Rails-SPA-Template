@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ViteManual</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <% if Rails.env.development? %>
+      <script type="module">
+          import RefreshRuntime from 'http://localhost:5173/@react-refresh'
+          RefreshRuntime.injectIntoGlobalHook(window)
+          window.$RefreshReg$ = () => {}
+          window.$RefreshSig$ = () => (type) => type
+          window.__vite_plugin_react_preamble_installed__ = true
+      </script>
+      <script type="module" src="http://localhost:5173/@vite/client"></script>
+      <script type="module" src="http://localhost:5173/frontend/src/index.tsx"></script>
+    <% end %>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+  <body>
+    <%= yield %>
+    <% if Rails.env.production? %>
+      <%= stylesheet_link_tag "index", "data-turbo-track": "reload" %>
+      <%= javascript_include_tag "index", "data-turbo-track": "reload"  %>
+    <% end %>
+  </body>
+</html>
