@@ -11,6 +11,10 @@
     "strict": true,
     "jsx": "react-jsx",
     "noEmit": true,
+    "typeRoots": [
+      "./frontend/types",
+      "node_modules/@types"
+    ]
   },
   "include": [
     "./frontend/src/**/*"

@@ -1,0 +1,10 @@
+FROM node:16
+
+RUN mkdir /vite
+WORKDIR /vite
+COPY . /vite
+RUN rm -rf /frontend/node_modules
+RUN apt update \
+    && npm install
+EXPOSE 5173
+CMD ["npm", "run", "vite", "--host"]

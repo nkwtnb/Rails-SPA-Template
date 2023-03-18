@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: myapp_development
+      MYSQL_USER: myapp_user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./tmp/mysql:/var/lib/mysql
+  web:
+    build: .
+    command: bash -c "bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - ./:/myapp
+    ports:
+      - "3005:3000"
+    depends_on:
+      - db
+  vite:
+    build:
+      context: .
+      dockerfile: Dockerfile.vite
+    command: bash -c "npm run vite -- --host"
+    volumes:
+      - .:/vite
+#    working_dir: /frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - web
