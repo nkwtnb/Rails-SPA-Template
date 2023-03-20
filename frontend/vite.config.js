@@ -6,13 +6,15 @@ export default defineConfig({
     build: {
         // generate manifest.json in outDir
         manifest: true,
-        outDir: "./app/javascript/frontend/",
+        outDir: "./../app/assets/frontend/",
         rollupOptions: {
             // overwrite default .html entry
-            input: './frontend/src/index.tsx',
+            input: './src/index.tsx',
             output: {
-                entryFileNames: "[name].js",
-                assetFileNames: "[name][extname]"
+                // entryFileNames: "[name].js",
+                // assetFileNames: "[name][extname]"
+                entryFileNames: "frontend.js",
+                assetFileNames: "frontend[extname]"
             }
         }
     },

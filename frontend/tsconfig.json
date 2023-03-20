@@ -12,11 +12,11 @@
     "jsx": "react-jsx",
     "noEmit": true,
     "typeRoots": [
-      "./frontend/types",
+      "./types",
       "node_modules/@types"
     ]
   },
   "include": [
-    "./frontend/src/**/*"
+    "./src/**/*"
   ]
 }

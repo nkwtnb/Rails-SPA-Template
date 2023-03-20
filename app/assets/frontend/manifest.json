@@ -1,0 +1,14 @@
+{
+  "src/index.tsx": {
+    "file": "frontend.js",
+    "src": "src/index.tsx",
+    "isEntry": true,
+    "css": [
+      "frontend.css"
+    ]
+  },
+  "src/index.css": {
+    "file": "frontend.css",
+    "src": "src/index.css"
+  }
+}

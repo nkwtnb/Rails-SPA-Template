@@ -1,9 +1,9 @@
 FROM node:16
 
-RUN mkdir /vite
-WORKDIR /vite
-COPY . /vite
-RUN rm -rf /frontend/node_modules
+RUN mkdir /frontend
+WORKDIR /frontend
+COPY ./frontend /frontend
+RUN rm -rf /node_modules
 RUN apt update \
     && npm install
 EXPOSE 5173

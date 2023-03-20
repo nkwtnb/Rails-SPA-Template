@@ -21,14 +21,13 @@ services:
       - "3005:3000"
     depends_on:
       - db
-  vite:
+  frontend:
     build:
       context: .
-      dockerfile: Dockerfile.vite
+      dockerfile: ./frontend/Dockerfile
     command: bash -c "npm run vite -- --host"
     volumes:
-      - .:/vite
-#    working_dir: /frontend
+      - ./frontend:/frontend
     ports:
       - "5173:5173"
     depends_on:

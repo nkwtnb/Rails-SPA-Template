@@ -1,6 +1,6 @@
 module.exports = {
   roots: [
-    "<rootDir>/frontend"
+    "<rootDir>"
   ],
   testMatch: [
     "**/__tests__/**/*.+(ts|tsx|js)",
@@ -27,7 +27,7 @@ module.exports = {
   },
   testEnvironment: "jsdom",
   setupFilesAfterEnv: [
-    "<rootDir>/frontend/__tests_config__/setupTests.ts"
+    "<rootDir>/__tests_config__/setupTests.ts"
   ],
   testPathIgnorePatterns: [
     "<rootDir>/node_modules",
