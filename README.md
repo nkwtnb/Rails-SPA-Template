@@ -13,24 +13,24 @@
 ※テンプレートリポジトリに紐づく`.git`は不要なので削除する  
 `git clone --depth 1 https://github.com/nkwtnb/Rails-SPA-Template . && rm -rf .git`
 
-1. バックエンド側依存パッケージインストール  
-`bundle install [--path vendor/bundle]`
-
-1. フロントエンド側依存パッケージインストール  
-`npm install`
-
-1. リポジトリ初期化、作業開始👍  
+1. リポジトリ初期化  
 `git init`
 
-## フロントエンド開発
-1. viteサーバー起動  
-`npm run vite -- dev`  
-`frontend/src/` 配下のソースの変更時に、viteのHMRによる開発が可能
+1. コンテナ作成  
+`docker-compose build`
 
-1. 本番用ビルド  
-`npm run build`  
-以下のビルド、コンパイルを行う
+1. コンテナ起動、作業開始👍  
+`docker-compose up [-d]`
+- バックエンド（Rails）側はファイルを更新すれば、それがそのまま適用される
+- フロントエンド（React）側もviteによるHMRが有効になっている為、更新がそのまま適用される
+
+## 本番用ビルド
+1. TypeScriptのコンパイル、viteのビルド  
+`npm run build`
    1. viteによるビルドを実行
-      - viteのビルド結果は `/app/javascript/frontend/` に出力し、プリコンパイル対象とする
+      - viteのビルド結果は `/app/assets/frontend/` に出力し、プリコンパイル対象となる
+
+1. Railsのアセットプリコンパイル  
+`bundle exec rails assets:precompile RAILS_ENV=production`
    1. Railsによるアセットプリコンパイルを実行
       - アセットプリコンパイルの結果は `public/assets/frontend` に出力される
